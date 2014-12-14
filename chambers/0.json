@@ -1,0 +1,19 @@
+{
+	"chamber": 0,
+	"description": "",
+	"new": ["h","j","k","l"],
+	"scene": [
+		"    +-+",
+		"  +-+O+-------+",
+		"+-+   |       |",
+		"|   +-+ --+-+ |",
+		"|   |  k  |*| |",
+		"|   | h@l |   |",
+		"|   |  j *| +-+",
+		"|   +-----+ |",
+		"|           |",
+		"|*        +-+",
+		"+---------+"
+	],
+	"speech": "Hello and welcome to the VIM user experience enrichment centre. You are going to learn VIM through a series of fun test chambers. Shall we begin?"
+}

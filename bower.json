@@ -1,0 +1,15 @@
+{
+  "name": "vim-experiments",
+  "version": "0.0.0",
+  "authors": [
+    "Herman Starikov <hstarikov@hstarikov-lt-dev.uxp.local>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

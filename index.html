@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>VIM</title>
+    <style type="text/css">
+	    @font-face {
+	      font-family: "SourceCodePro-Regular";
+	      src: url("./SourceCodePro-Regular.ttf");
+	    }
+    	body {
+    		font-family: "SourceCodePro-Regular";
+    		font-size: 2em;
+    		background-color: rgba(165, 89, 42, 1);
+			color: rgba(255, 197, 90, 1);
+    	}
+    	.cursor {
+    		background: rgba(0,0,0,0.5);
+    		transition: 0.4s;
+    		animation:  blink 0.8s infinite;
+    		-webkit-animation:  blink 0.8s infinite;
+    	}
+    	@-webkit-keyframes blink {
+		  0%   { rbackground-color: gba(0,0,0,0) }
+		  50% { background-color: rgba(0,0,0,0.5) }
+		  100% { background-color: rgba(0,0,0,0) }
+		}
+		@keyframes blink {
+		  0%   { background-color: rgba(0,0,0,0) }
+		  50% { background-color: rgba(0,0,0,0.5) }
+		  100% { background-color: rgba(0,0,0,0) }
+		}
+    </style>
+</head>
+<body>
+
+<main></main>
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/main.js"></script>
+
+</body>
+</html>
