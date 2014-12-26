@@ -4,15 +4,15 @@
 	"new": [],
 	"scene": [
 		"+--+-----------+",
-		"| @|      <    +---------+",
-		"|  |  -+-+-+-- |   <     |",
-		"| -+-  |*  |   | -+---+  +--------+",
-		"|  |   +-+ | | |  +-+ |          *|",
-		"+- ++    |   |      | + +----+----+",
-		"|*  |   -+--++------+ | <   O|",
-		"|           |         +------+",
+		"|@ |      <    +---------+",
+		"+- |  -+---+-- | <       ++",
+		"|  +-  |*  |   | -+--+    +-------+",
+		"| -+   +-+ | | |  +-+++          *|",
+		"|  +-    |   |      | | -----+----+",
+		"+- |    -+--++------+ | <   O|",
+		"|*          |         +------+",
 		"+-----------+"
 		
 	],
-	"speech": "Portal, portal, so exiting! Moving vertically into wall opens portals. You will appear at the last column of a shorter line, or at the same column where you begun in case of a longer line."
+	"speech": "Portal, portal, so exiting! Bumping vertically into a wall opens portals."
 }

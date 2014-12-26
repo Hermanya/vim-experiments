@@ -1,4 +1,5 @@
 {
+    "node": true,
     "browser": true,
     "esnext": true,
     "bitwise": true,
@@ -18,7 +19,5 @@
     "trailing": true,
     "smarttabs": true,
     "white": true,
-    "globals": [
-        "$"
-    ]
+    "browserify": true
 }

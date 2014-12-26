@@ -1,0 +1,144 @@
+@amber-background: rgb(165, 89, 42);
+@amber-font: rgb(255, 191, 0);
+@green-background: rgb(67, 111, 76);
+@green-font: rgb(108, 255, 148);
+
+@font-face {
+	font-family: "Inconsolata Regular";
+	src: url("../../Inconsolata/Inconsolata-Regular.ttf");
+}
+
+body {
+	font-family: "Inconsolata Regular";
+	font-size: 2em; 
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+pre {
+	font-family: "Inconsolata Regular";
+}
+
+span {
+	position: relative;
+}
+
+
+
+.theme(@font, @background, @cursor-blink-over-background, @cursor-blink-over-text) { 
+	background-color: @background; 
+	background-image: radial-gradient(@background 0%, darken(@background, 20%) 100%);
+	color: @font;
+	.text {
+		background-color: @font; 
+		color: @background;
+	}
+	.lazer-beam {
+		outline: @font 1px dotted;
+		position: absolute;
+		content: '';
+		width: 0;
+		height: 0;
+		left: 0;
+		top: 0;
+	}
+	.cursor {
+		animation-name: @cursor-blink-over-background;
+		animation-duration: 1s;
+		animation-timing-function: steps(2, start);
+		animation-iteration-count: infinite;
+	}
+	.text.cursor {
+		animation-name: @cursor-blink-over-text;
+	}
+	.vertical-lazer-beam:before{
+		.lazer-beam;
+		height: 100%;
+		left: 50%;
+	}
+	.horizontal-lazer-beam:after{
+		.lazer-beam;
+		width: 100%;
+		top: 50%;
+	}
+	.text.horizontal-lazer-beam:after,
+	.text.vertical-lazer-beam:before{
+		outline-color: @background;
+	}
+
+	@keyframes @cursor-blink-over-background { 
+		0% {background-color: fadeout(@font, 10%);}
+	}
+	@keyframes @cursor-blink-over-text { 
+		0% {background-color: fadeout(@background, 10%);}
+	}
+
+	#screen-refresh:before {
+		background: radial-gradient(fadeout(@background, 80%) 0, transparent 66%);
+	}
+}
+
+.amber {
+	.theme(@amber-font, @amber-background, emberCursorBlinkOverBackground, emberCursorBlinkOverText);
+}
+
+.green {
+	.theme(@green-font, @green-background, greenCursorBlinkOverBackground, greenCursorBlinkOverText);
+}
+
+
+#scene {
+	display: table;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@keyframes screenRefresh { 
+	from {transform: translateY(-100%);}
+	to {transform: translateY(0);}
+}
+
+#screen-refresh {
+	z-index: -1;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 100%;
+	overflow: hidden;
+	animation:  screenRefresh 3s infinite;
+}
+
+#screen-refresh:before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform: translateY(50%);
+}
+
+
+#command-line {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	transform: translateY(1em);
+	transition: 0.4s;
+	height: 1em;
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+	font-family: inherit;
+	font-size: inherit;
+	background-color: inherit;
+	color: inherit;
+}
+
+#command-line:focus {
+	transform: initial;
+}

@@ -1,0 +1,257 @@
+@font-face {
+  font-family: "Inconsolata Regular";
+  src: url("../../Inconsolata/Inconsolata-Regular.ttf");
+}
+body {
+  font-family: "Inconsolata Regular";
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+pre {
+  font-family: "Inconsolata Regular";
+}
+span {
+  position: relative;
+}
+.amber {
+  background-color: #a5592a;
+  background-image: -webkit-radial-gradient(#a5592a 0%, #542d15 100%);
+  background-image: radial-gradient(#a5592a 0%, #542d15 100%);
+  color: #ffbf00;
+}
+.amber .text {
+  background-color: #ffbf00;
+  color: #a5592a;
+}
+.amber .lazer-beam {
+  outline: #ffbf00 1px dotted;
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+}
+.amber .cursor {
+  -webkit-animation-name: emberCursorBlinkOverBackground;
+          animation-name: emberCursorBlinkOverBackground;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: steps(2, start);
+          animation-timing-function: steps(2, start);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.amber .text.cursor {
+  -webkit-animation-name: emberCursorBlinkOverText;
+          animation-name: emberCursorBlinkOverText;
+}
+.amber .vertical-lazer-beam:before {
+  outline: #ffbf00 1px dotted;
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+  height: 100%;
+  left: 50%;
+}
+.amber .horizontal-lazer-beam:after {
+  outline: #ffbf00 1px dotted;
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  top: 50%;
+}
+.amber .text.horizontal-lazer-beam:after,
+.amber .text.vertical-lazer-beam:before {
+  outline-color: #a5592a;
+}
+@-webkit-keyframes emberCursorBlinkOverBackground {
+  0% {
+    background-color: rgba(255, 191, 0, 0.9);
+  }
+}
+@keyframes emberCursorBlinkOverBackground {
+  0% {
+    background-color: rgba(255, 191, 0, 0.9);
+  }
+}
+@-webkit-keyframes emberCursorBlinkOverText {
+  0% {
+    background-color: rgba(165, 89, 42, 0.9);
+  }
+}
+@keyframes emberCursorBlinkOverText {
+  0% {
+    background-color: rgba(165, 89, 42, 0.9);
+  }
+}
+.amber #screen-refresh:before {
+  background: -webkit-radial-gradient(rgba(165, 89, 42, 0.2) 0, transparent 66%);
+  background: radial-gradient(rgba(165, 89, 42, 0.2) 0, transparent 66%);
+}
+.green {
+  background-color: #436f4c;
+  background-image: -webkit-radial-gradient(#436f4c 0%, #1d2f20 100%);
+  background-image: radial-gradient(#436f4c 0%, #1d2f20 100%);
+  color: #6cff94;
+}
+.green .text {
+  background-color: #6cff94;
+  color: #436f4c;
+}
+.green .lazer-beam {
+  outline: #6cff94 1px dotted;
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+}
+.green .cursor {
+  -webkit-animation-name: greenCursorBlinkOverBackground;
+          animation-name: greenCursorBlinkOverBackground;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: steps(2, start);
+          animation-timing-function: steps(2, start);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.green .text.cursor {
+  -webkit-animation-name: greenCursorBlinkOverText;
+          animation-name: greenCursorBlinkOverText;
+}
+.green .vertical-lazer-beam:before {
+  outline: #6cff94 1px dotted;
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+  height: 100%;
+  left: 50%;
+}
+.green .horizontal-lazer-beam:after {
+  outline: #6cff94 1px dotted;
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  top: 50%;
+}
+.green .text.horizontal-lazer-beam:after,
+.green .text.vertical-lazer-beam:before {
+  outline-color: #436f4c;
+}
+@-webkit-keyframes greenCursorBlinkOverBackground {
+  0% {
+    background-color: rgba(108, 255, 148, 0.9);
+  }
+}
+@keyframes greenCursorBlinkOverBackground {
+  0% {
+    background-color: rgba(108, 255, 148, 0.9);
+  }
+}
+@-webkit-keyframes greenCursorBlinkOverText {
+  0% {
+    background-color: rgba(67, 111, 76, 0.9);
+  }
+}
+@keyframes greenCursorBlinkOverText {
+  0% {
+    background-color: rgba(67, 111, 76, 0.9);
+  }
+}
+.green #screen-refresh:before {
+  background: -webkit-radial-gradient(rgba(67, 111, 76, 0.2) 0, transparent 66%);
+  background: radial-gradient(rgba(67, 111, 76, 0.2) 0, transparent 66%);
+}
+#scene {
+  display: table;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+@-webkit-keyframes screenRefresh {
+  from {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes screenRefresh {
+  from {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+#screen-refresh {
+  z-index: -1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  overflow: hidden;
+  -webkit-animation: screenRefresh 3s infinite;
+          animation: screenRefresh 3s infinite;
+}
+#screen-refresh:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+          transform: translateY(50%);
+}
+#command-line {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  -webkit-transform: translateY(1em);
+      -ms-transform: translateY(1em);
+          transform: translateY(1em);
+  -webkit-transition: 0.4s;
+          transition: 0.4s;
+  height: 1em;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: inherit;
+  color: inherit;
+}
+#command-line:focus {
+  -webkit-transform: initial;
+      -ms-transform: initial;
+          transform: initial;
+}
