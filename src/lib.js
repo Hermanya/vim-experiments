@@ -1,4 +1,4 @@
-var scene = require('./scene.js'),
+var scene = require('./chamber.js'),
 	cursor = require('./cursor.js');
 
 
@@ -10,18 +10,18 @@ module.exports = {
 
 		if (!matrix[cursor.row][_column].isBlocking()) {
 			cursor.column = _column;
-			cursor.forgetColumn();
+			cursor.forgetColumnForVerticalMovement();
 		}
 	},
 	'move vertically': function(options) {
 		var matrix = scene.matrix;
-		cursor.save();
-		cursor.rememberColumn();
+		cursor.saveCurrentPosition();
+		cursor.rememberColumnForVerticalMovement();
 		var stepsAside = 0,
 			sign = options.direction === 'up' ? -1 : 1;
 		if (!matrix[cursor.row + 1 * sign][cursor.column].isWall()) {
 			while (!matrix[cursor.row + 1 * sign][cursor.column + stepsAside + 1].isWall() &&
-			 cursor.column + stepsAside < cursor.rememberedColumn) {
+			 cursor.column + stepsAside < cursor.rememberedColumnForVerticalMovement) {
 				stepsAside++;
 			}
 			cursor.column += stepsAside;
@@ -38,15 +38,15 @@ module.exports = {
 			}
 		}
 		if (matrix[cursor.row][cursor.column].isBlocking()) {
-			cursor.restore();
+			cursor.restoreToSavedPosition();
 		}
 	},
 	'move by word': function(options) {
-		if (!scene.getCurrentCell().isText) {
+		if (!scene.getCellUnderCursor().isText) {
 			return;
 		}
 		var moveToNextChar, isLastCharacter;
-		cursor.save();
+		cursor.saveCurrentPosition();
 		
 		if (options.direction === 'forward') {
 			moveToNextChar = moveOneCharacterForward;
@@ -66,14 +66,14 @@ module.exports = {
 			toEndOfWhiteSpaceSequence(moveToNextChar, isLastCharacter);
 			if (options.direction === 'forward' && options.to === 'ending') {
 				toEndOfNonWhiteSpaceSequence(moveToNextChar, isLastCharacter);
-				if (!scene.getCurrentCell().isEndOfFile) {
+				if (!scene.getCellUnderCursor().isEndOfFile) {
 					moveOneCharacterBackward();
 				}
 				
 			} else if (options.direction === 'backward' && options.to === 'beginning') {
 				toEndOfNonWhiteSpaceSequence(moveToNextChar, isLastCharacter);
 				
-				if (!scene.getCurrentCell().isBeginningOfFile) {
+				if (!scene.getCellUnderCursor().isBeginningOfFile) {
 					moveOneCharacterForward();
 				}
 			}
@@ -81,7 +81,7 @@ module.exports = {
 
 			if (options.direction === 'forward' && options.to === 'ending') {
 				toEndOfNonWhiteSpaceSequence(moveToNextChar, isLastCharacter);
-				if (!scene.getCurrentCell().isEndOfFile) {
+				if (!scene.getCellUnderCursor().isEndOfFile) {
 					moveOneCharacterBackward();
 				}
 			} else if (options.direction === 'forward' && options.to === 'beginning') {
@@ -89,20 +89,20 @@ module.exports = {
 				toEndOfWhiteSpaceSequence(moveToNextChar, isLastCharacter);
 			} else if (options.direction === 'backward' && options.to === 'beginning') {
 				toEndOfNonWhiteSpaceSequence(moveToNextChar, isLastCharacter);
-				if (!scene.getCurrentCell().isBeginningOfFile) {
+				if (!scene.getCellUnderCursor().isBeginningOfFile) {
 					moveOneCharacterForward();
 				}
 			}
 		}
 		if (scene.matrix[cursor.row][cursor.column].isBlocking()) {
-			cursor.restore();
+			cursor.restoreToSavedPosition();
 		}
 	}
 };
 
 
 function getCurrentCharacter() {
-	return scene.getCurrentCell().character;
+	return scene.getCellUnderCursor().character;
 }
 
 function isWordCharacter(character) {
@@ -118,11 +118,11 @@ function isOtherCharacter(character) {
 }
 
 function isEndOfFile() {
-	return scene.getCurrentCell().isEndOfFile;
+	return scene.getCellUnderCursor().isEndOfFile;
 }
 
 function isBeginningOfFile() {
-	return scene.getCurrentCell().isBeginningOfFile;
+	return scene.getCellUnderCursor().isBeginningOfFile;
 }
 
 function toEndOfNonWhiteSpaceSequence(moveToNextCharacter, isLastCharacter) {
@@ -144,7 +144,7 @@ function toEndOfWhiteSpaceSequence(moveToNextCharacter, isLastCharacter) {
 }
 
 function moveOneCharacterBackward () {
-	var previousTextCell = scene.getCurrentCell().previousTextCell;
+	var previousTextCell = scene.getCellUnderCursor().previousTextCell;
 	if (previousTextCell) {
 		cursor.column = previousTextCell.column;
 		cursor.row = previousTextCell.row;
@@ -172,7 +172,7 @@ function moveOneCharacterForward() {
 function isLastCharacterInWord () {
 	var predicate = isWordCharacter() ? isWordCharacter : isOtherCharacter;
 
-	var nextTextCell = scene.getCurrentCell().nextTextCell;
+	var nextTextCell = scene.getCellUnderCursor().nextTextCell;
 	if (nextTextCell) {
 		return !predicate(nextTextCell.character)
 	}
@@ -183,7 +183,7 @@ function isLastCharacterInWord () {
 function isFirstCharacterInWord () {
 	var predicate = isWordCharacter() ? isWordCharacter : isOtherCharacter;
 
-	var previousTextCell = scene.getCurrentCell().previousTextCell;
+	var previousTextCell = scene.getCellUnderCursor().previousTextCell;
 	if (previousTextCell) {
 		return !predicate(previousTextCell.character)
 	}

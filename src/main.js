@@ -1,42 +1,38 @@
 var cursor = require('./cursor.js'),
-	scene = require('./scene.js'),
+	scene = require('./chamber.js'),
 	keys = require('./keys.js'),
-	commandLine = require('./command-line.js');
+	commands = require('./commands.js');
 
-function main(chamber) {
-	scene.fromArrayOfStrings(chamber.scene);
+function main(json) {
+	scene.fromJSON(json);
 	scene.initialize();
 	scene.render();
 	window.removeEventListener('keypress', keypressHandler);
 	window.addEventListener('keypress', keypressHandler);
-	window.removeEventListener('click', clickHandler);
-	window.addEventListener('click', clickHandler);
+	window.removeEventListener('click', changeTheme);
+	window.addEventListener('click', changeTheme);
 }
 
 function keypressHandler(e) {
 	var character = String.fromCharCode(e.charCode);
-	if (commandLine.isActive) {
-		commandLine.input(character);
-	} else {
-		if (keys[character]) {
-			scene.toggleCursor();
-			keys[character]();
-			scene.toggleCursor();
-			cursor.reactOnCurrentCellOnScene(scene);
-			scene.render();
-		}
+	if (keys[character]) {
+		keys[character]();
 	}
+	scene.render();
 }
 
-var themes = ['amber', 'green'],
-currentThemeIndex = 0;
-function clickHandler () {
-	var body = document.querySelector('body');
-	body.classList.remove(themes[currentThemeIndex]);
-	currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-	body.classList.add(themes[currentThemeIndex]);
+function changeTheme() {
+	var index = changeTheme.currentThemeIndex,
+		themes = changeTheme.themes,
+		currentTheme = themes[index],
+		body = document.querySelector('body');
+	body.classList.remove(currentTheme);
+	index = (index + 1) % themes.length;
+	changeTheme.currentThemeIndex = index;
+	currentTheme = themes[index];
+	body.classList.add(currentTheme);
 }
+changeTheme.themes = ['amber', 'green', 'white'];
+changeTheme.currentThemeIndex = 0;
 
-
-
-commandLine.commands['initialize chamber'](main);
+commands['initialize chamber'](main);

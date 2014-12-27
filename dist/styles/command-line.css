@@ -1,0 +1,24 @@
+#command-line {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  -webkit-transform: translateY(1em);
+      -ms-transform: translateY(1em);
+          transform: translateY(1em);
+  -webkit-transition: 0.4s;
+          transition: 0.4s;
+  height: 1em;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: inherit;
+  color: inherit;
+}
+#command-line:focus {
+  -webkit-transform: initial;
+      -ms-transform: initial;
+          transform: initial;
+}

@@ -1,9 +1,9 @@
 var testUtil = require('./test-util.js');
 describe('chamber 00', function() {
-	var scene, cursor, keys;
+	var chamber, cursor, keys;
 	keys = require('../src/keys.js');
 	cursor = require('../src/cursor.js');
-	scene = require('../src/scene.js');
+	chamber = require('../src/chamber.js');
 
 	beforeEach(function() {
 		testUtil.loadChamber(0);
@@ -37,18 +37,17 @@ describe('chamber 00', function() {
 
 	describe('getting a star', function() {
 		it('should have 3 stars', function() {
-			expect(scene.getCoordinatesOf({
+			expect(chamber.getCoordinatesOf({
 				character: '*'
 			}).length).toEqual(3);
 		});
 		it('should have a star near by', function() {
-			expect(scene.matrix[6][9].character).toEqual('*');
+			expect(chamber.matrix[6][9].character).toEqual('*');
 		});
 		it('should be able to collect the star near by', function() {
 			keys.l(2);
 			keys.j();
-			cursor.reactOnCurrentCellOnScene(scene);
-			expect(scene.matrix[6][9].character).toEqual('&nbsp;');
+			expect(chamber.matrix[6][9].character).toEqual(' ');
 		});
 	});
 
@@ -63,8 +62,7 @@ describe('chamber 00', function() {
 			keys.k(6);
 			keys.l(2);
 			keys.k();
-			cursor.reactOnCurrentCellOnScene(scene);
-			expect(cursor.isDone).toEqual(true);
+			expect(cursor.hasCompletedLevel).toEqual(true);
 		});
 	});
 });

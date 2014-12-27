@@ -1,0 +1,53 @@
+.theme(@font, @background, @cursor-blink-over-background, @cursor-blink-over-text) {
+	@keyframes @cursor-blink-over-background { 
+		0% {background-color: fadeout(@font, 10%);}
+	}
+	@keyframes @cursor-blink-over-text { 
+		0% {background-color: fadeout(@background, 10%);}
+	}
+
+	background-color: @background; 
+	background-image: radial-gradient(@background 0%, darken(@background, 20%) 100%);
+	color: @font;
+	.text {
+		background-color: @font; 
+		color: @background;
+	}
+	.cursor {
+		animation-name: @cursor-blink-over-background;
+		animation-duration: 1s;
+		animation-timing-function: steps(2, start);
+		animation-iteration-count: infinite;
+	}
+	.text.cursor {
+		animation-name: @cursor-blink-over-text;
+	}
+	.lazer-beam {
+		outline-color: @font;
+		outline-width: 1px;
+		outline-style: dotted;
+		position: absolute;
+		content: '';
+		width: 0;
+		height: 0;
+		left: 0;
+		top: 0;
+	}
+	.vertical-lazer-beam:before{
+		.lazer-beam;
+		height: 100%;
+		left: 50%;
+	}
+	.horizontal-lazer-beam:after{
+		.lazer-beam;
+		width: 100%;
+		top: 50%;
+	}
+	.text.horizontal-lazer-beam:after,
+	.text.vertical-lazer-beam:before{
+		outline-color: @background;
+	}
+	#screen-refresh:before {
+		background: radial-gradient(fadeout(@background, 80%) 0, transparent 66%);
+	}
+}

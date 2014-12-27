@@ -69,7 +69,6 @@ gulp.task('watch', function() {
   gulp.watch(path.scripts, ['scripts']);
   gulp.watch(path.styles, ['styles']);
   gulp.watch(path.chambers, ['chambers']);
- // gulp.watch(path.html, ['chambers']);
 });
 
 gulp.task('serve', connect.server({

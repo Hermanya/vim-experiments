@@ -1,9 +1,7 @@
 var testUtil = require('./test-util.js');
-describe('chamber 00', function() {
-	var scene, cursor, keys;
-	keys = require('../src/keys.js');
-	cursor = require('../src/cursor.js');
-	scene = require('../src/scene.js');
+describe('chamber 01', function() {
+	var keys = require('../src/keys.js'),
+		cursor = require('../src/cursor.js');
 
 	beforeEach(function() {
 		testUtil.loadChamber(1);
@@ -52,8 +50,7 @@ describe('chamber 00', function() {
 			keys.l();
 			keys.j(2);
 			keys.l(4);
-			cursor.reactOnCurrentCellOnScene(scene);
-			expect(cursor.isDone).toEqual(true);
+			expect(cursor.hasCompletedLevel).toEqual(true);
 		});
 	});
 });

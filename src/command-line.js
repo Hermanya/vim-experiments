@@ -1,47 +1,43 @@
-var commands = require('./commands.js'),
-	newLineCharacter = String.fromCharCode(13);
+var commands = require('./commands.js');
 
 var commandLine = {
-	isActive: false,
-	commands: commands,
-	activate: function() {
-		this.isActive = true;
-		this.element.focus();
-		this.value = ':';
-	},
-	input: function(character) {
-		if (character === newLineCharacter) {
-			this.execute();
-			this.clear();
-		}
-	},
 	execute: function() {
-		var givenCommand = this.element.value.slice(1);
-		Object.keys(this.commands).every(function(key) {
+		var givenCommand = this.element.value.slice(1); // strip colon
+		Object.keys(commands).forEach(function(key) {
 			var matches = givenCommand.match(new RegExp(key));
-			if (!matches) {
-				return true;
+			if (matches) {
+				commands[key].apply(this, matches.slice(1)); // strip matching line
 			}
-			commands[key].apply(this, matches.slice(1));
 		});
-	},
-	clear: function() {
-		this.isActive = false;
-		this.element.blur();
-		this.element.value = '';
 	}
 };
 
 if (typeof window !== 'undefined') {
 	commandLine.element = window.document.querySelector('#command-line');
-
 	commandLine.element.addEventListener('blur', function(e) {
-		if (commandLine.isActive) {
+		if (commandLine.element.value) {
 			commandLine.element.focus();
 		}
 	});
+	commandLine.element.addEventListener('keypress', function(e) {
+		if (e.which === 13) {
+			commandLine.execute();
+			commandLine.deactivate();
+		}
+		e.stopPropagation();
+	});
+	commandLine.element.addEventListener('keyup', function() {
+		if (commandLine.element.value === '') {
+			commandLine.deactivate();
+		}
+	})
+	commandLine.activate = function() {
+		this.element.focus();
+	};
+	commandLine.deactivate = function() {
+		this.element.value = '';
+		this.element.blur();
+	};
 }
-
-
 
 module.exports = commandLine;
