@@ -1,10 +1,10 @@
 var commands = require('./commands.js');
 module.exports = {
 	score: 0,
-	reactOnCurrentCellOnScene: function(scene) {
+	actOnCurrentCell: function(chamber) {
 		var cursor = this,
-		cell = scene.getCellUnderCursor(),
-		reaction = {
+		cell = chamber.getCellUnderCursor(),
+		action = {
 			'*': function() {
 				cell.character = ' ';
 				cursor.score++;
@@ -18,14 +18,14 @@ module.exports = {
 				}[cursor.score] || 'Satisfying performace.';
 				if (typeof window !== 'undefined') {
 					setTimeout(function() {
-						alert(congratulationMessage);
+						window.alert(congratulationMessage);
 						commands.loadNextChamber();
 					}, 0);
 				}
 			}
 		}[cell.character];
-		if (!cell.isText && reaction) {
-			reaction();
+		if (!cell.isText && action) {
+			action();
 		}
 	},
 	reset: function() {

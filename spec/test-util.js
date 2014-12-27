@@ -1,6 +1,5 @@
-var fs = require('fs');
-var cursor = require('../src/cursor.js');
-var chamber = require('../src/chamber.js');
+var fs = require('fs'),
+	chamber = require('../src/chamber.js');
 
 module.exports = {
 	loadChamber: function(chamberNumber) {

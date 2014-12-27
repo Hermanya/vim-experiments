@@ -1,24 +1,13 @@
-var cursor = require('./cursor.js'),
-	scene = require('./chamber.js'),
+var chamber = require('./chamber.js'),
 	keys = require('./keys.js'),
 	commands = require('./commands.js');
-
-function main(json) {
-	scene.fromJSON(json);
-	scene.initialize();
-	scene.render();
-	window.removeEventListener('keypress', keypressHandler);
-	window.addEventListener('keypress', keypressHandler);
-	window.removeEventListener('click', changeTheme);
-	window.addEventListener('click', changeTheme);
-}
 
 function keypressHandler(e) {
 	var character = String.fromCharCode(e.charCode);
 	if (keys[character]) {
 		keys[character]();
 	}
-	scene.render();
+	chamber.render();
 }
 
 function changeTheme() {
@@ -34,5 +23,15 @@ function changeTheme() {
 }
 changeTheme.themes = ['amber', 'green', 'white'];
 changeTheme.currentThemeIndex = 0;
+
+function main(json) {
+	chamber.fromJSON(json);
+	chamber.initialize();
+	chamber.render();
+	window.removeEventListener('keypress', keypressHandler);
+	window.addEventListener('keypress', keypressHandler);
+	window.removeEventListener('click', changeTheme);
+	window.addEventListener('click', changeTheme);
+}
 
 commands['initialize chamber'](main);

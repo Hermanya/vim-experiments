@@ -11,7 +11,6 @@
     "gulp-jasmine": "^1.0.1",
     "gulp-jshint": "^1.9.0",
     "gulp-less": "^2.0.1",
-    "less-plugin-autoprefix": "^1.0.1",
     "rimraf": "^2.2.8"
   },
   "scripts": {

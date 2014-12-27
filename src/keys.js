@@ -1,7 +1,7 @@
 var lib = require('./lib.js'),
 	commandLine = require('./command-line.js'),
 	cursor = require('./cursor.js'),
-	scene = require('./chamber.js');
+	chamber = require('./chamber.js');
 
 var keys = {
 	'h': function() {
@@ -52,10 +52,9 @@ module.exports = {};
 Object.keys(keys).map(function(key) {
 	module.exports[key] = function(numberOfTimes) {
 		numberOfTimes = numberOfTimes || 1;
-		while (numberOfTimes > 0) {
+		while (numberOfTimes-- > 0) {
 			keys[key]();
-			cursor.reactOnCurrentCellOnScene(scene);
-			numberOfTimes--;
+			cursor.actOnCurrentCell(chamber);
 		}
-	}
-})
+	};
+});

@@ -14,7 +14,7 @@ var commandLine = {
 
 if (typeof window !== 'undefined') {
 	commandLine.element = window.document.querySelector('#command-line');
-	commandLine.element.addEventListener('blur', function(e) {
+	commandLine.element.addEventListener('blur', function() {
 		if (commandLine.element.value) {
 			commandLine.element.focus();
 		}
@@ -30,7 +30,7 @@ if (typeof window !== 'undefined') {
 		if (commandLine.element.value === '') {
 			commandLine.deactivate();
 		}
-	})
+	});
 	commandLine.activate = function() {
 		this.element.focus();
 	};

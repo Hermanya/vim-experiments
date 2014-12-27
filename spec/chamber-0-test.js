@@ -1,9 +1,8 @@
 var testUtil = require('./test-util.js');
 describe('chamber 00', function() {
-	var chamber, cursor, keys;
-	keys = require('../src/keys.js');
-	cursor = require('../src/cursor.js');
-	chamber = require('../src/chamber.js');
+	var keys = require('../src/keys.js'),
+		cursor = require('../src/cursor.js'),
+		chamber = require('../src/chamber.js');
 
 	beforeEach(function() {
 		testUtil.loadChamber(0);

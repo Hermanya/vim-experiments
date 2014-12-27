@@ -1,4 +1,5 @@
-var commands = {}, mainFunction;
+var commands = {},
+	mainFunction;
 module.exports = commands;
 
 commands['chamber (\\d+)'] = function(chamberNumber) {
@@ -6,15 +7,21 @@ commands['chamber (\\d+)'] = function(chamberNumber) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState !== 4) {
 			return;
-		} else if (xmlhttp.status === 200) {
-			localStorage.chamber = chamberNumber;
-			mainFunction(JSON.parse(xmlhttp.responseText));
-		} else if (xmlhttp.status === 404) {
-			alert('Out of chambers');
-		} else {
-			alert(xmlhttp.status);
 		}
-		
+		var defaultAction = function() {
+				window.alert(xmlhttp.status);
+			},
+			action = {
+				'200': function() {
+					localStorage.chamber = chamberNumber;
+					mainFunction(JSON.parse(xmlhttp.responseText));
+				},
+				'404': function() {
+					window.alert('Out of such chambers');
+				}
+			}[xmlhttp.status] || defaultAction;
+		action();
+
 	};
 	chamberNumber = chamberNumber || localStorage.chamber || 0;
 	xmlhttp.open('GET', './chambers/' + chamberNumber + '.json', true);
@@ -29,4 +36,4 @@ commands.loadNextChamber = function() {
 commands['initialize chamber'] = function(main) {
 	mainFunction = main;
 	commands['chamber (\\d+)']();
-} 
+};

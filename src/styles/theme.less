@@ -1,7 +1,9 @@
-.theme(@font, @background, @cursor-blink-over-background, @cursor-blink-over-text) {
+.theme(@font, @background, @name) {
+	@cursor-blink-over-background: `@{name} + "BlinkOverBackground"`;
 	@keyframes @cursor-blink-over-background { 
 		0% {background-color: fadeout(@font, 10%);}
 	}
+	@cursor-blink-over-text: `@{name} + "BlinkOverText"`;
 	@keyframes @cursor-blink-over-text { 
 		0% {background-color: fadeout(@background, 10%);}
 	}
