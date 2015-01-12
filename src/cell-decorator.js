@@ -11,19 +11,23 @@ module.exports = {
 	isBlocking: function() {
 		return this.isWall() || this.isLazer() || this.isLazerBeam();
 	},
-	toString: function() {
+	toString: function(configuration) {
 		var propertyToClassName = {
 				'isText': 'text',
 				'isUnderCursor': 'cursor',
 				'isVerticalLazerBeam': 'vertical-lazer-beam',
-				'isHorizontalLazerBeam': 'horizontal-lazer-beam'
+				'isHorizontalLazerBeam': 'horizontal-lazer-beam',
+				'isUnderTurretFire': 'turret-fire'
 			},
 			classNames = Object.keys(propertyToClassName).filter(function(key) {
 				return this[key];
 			}.bind(this)).map(function(key) {
 				return propertyToClassName[key];
 			}).join(' ');
-			
+        if (this.lineNumber) {
+            this.character = configuration['display line numbers'] ? this.lineNumber : ' ';
+        }
+
 		return '<span  class="' + classNames + '">' + this.character + '</span>';
 	}
 };

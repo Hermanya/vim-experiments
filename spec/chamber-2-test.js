@@ -1,6 +1,6 @@
 var testUtil = require('./test-util.js');
 describe('chamber 02', function() {
-	var keys = require('../src/keys.js'),
+	var logKey = require('../src/log-key.js'),
 		cursor = require('../src/cursor.js');
 
 	beforeEach(function() {
@@ -9,7 +9,7 @@ describe('chamber 02', function() {
 
 	describe('word movement', function() {
 		beforeEach(function() {
-			keys.j(2);
+			logKey('2j');
 		});
 
 		it('brings me to the right place before each test in this section', function() {
@@ -17,38 +17,24 @@ describe('chamber 02', function() {
 			expect(cursor.row).toEqual(3);
 		});
 		it('moves to beginning of next word when press w', function() {
-			keys.w();
+            logKey('w');
 			expect(cursor.column).toEqual(6);
 		});
 		it('moves to ending on next word when press e', function() {
-			keys.e();
+			logKey('e');
 			expect(cursor.column).toEqual(5);
-			keys.e();
+			logKey('e');
 			expect(cursor.column).toEqual(6);
 		});
 		it('moves beginnning of previous word when press b', function() {
-			keys.w();
-			keys.b();
+			logKey('w b');
 			expect(cursor.column).toEqual(2);
 		});
 	});
 
 	describe('completing the level', function() {
 		it('completes the level', function() {
-			keys.j(2);
-			keys.w(5);
-			keys.l();
-			keys.j(2);
-			keys.h();
-			keys.b(4);
-			keys.l();
-			keys.j(2);
-			keys.l();
-			keys.e(6);
-			keys.j(2);
-			keys.h();
-			keys.b();
-			keys.j(2);
+            logKey('2j 5w l 2j h 4b l 2j l 6e 2j h b 2j');
 			expect(cursor.hasCompletedLevel).toEqual(true);
 		});
 	});

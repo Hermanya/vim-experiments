@@ -1,18 +1,21 @@
 .theme(@font, @background, @name) {
 	@cursor-blink-over-background: `@{name} + "BlinkOverBackground"`;
-	@keyframes @cursor-blink-over-background { 
+	@keyframes @cursor-blink-over-background {
 		0% {background-color: fadeout(@font, 10%);}
 	}
 	@cursor-blink-over-text: `@{name} + "BlinkOverText"`;
-	@keyframes @cursor-blink-over-text { 
+	@keyframes @cursor-blink-over-text {
 		0% {background-color: fadeout(@background, 10%);}
 	}
 
-	background-color: @background; 
+	background-color: @background;
 	background-image: radial-gradient(@background 0%, darken(@background, 20%) 100%);
 	color: @font;
+    #scene {
+        z-index: 1;
+    }
 	.text {
-		background-color: @font; 
+		background-color: @font;
 		color: @background;
 	}
 	.cursor {
@@ -45,8 +48,14 @@
 		width: 100%;
 		top: 50%;
 	}
+	.turret-fire {
+		outline-color: @font;
+		outline-width: 1px;
+		outline-style: dotted;
+	}
 	.text.horizontal-lazer-beam:after,
-	.text.vertical-lazer-beam:before{
+	.text.vertical-lazer-beam:before,
+	.text.turret-fire{
 		outline-color: @background;
 	}
 	#screen-refresh:before {

@@ -83,3 +83,10 @@ gulp.task('serve', ['tests', 'styles'], connect.server({
   open: true,
   livereload: true
 }));
+
+gulp.task('noTests', ['scripts', 'styles'], connect.server({
+  root: [__dirname],
+  port: 8000,
+  open: true,
+  livereload: true
+}));

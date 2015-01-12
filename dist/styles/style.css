@@ -67,6 +67,24 @@
       -ms-transform: initial;
           transform: initial;
 }
+.deactivated-turret {
+  position: absolute;
+  -webkit-transform: rotateZ(22deg);
+          transform: rotateZ(22deg);
+  font-style: italic;
+  left: 0;
+  top: 0;
+}
+#console {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: 0.2em;
+  font-size: 0.5em;
+  overflow: scroll;
+}
 body {
   font-family: "Inconsolata Regular";
   font-size: 2em;
@@ -112,6 +130,9 @@ body {
   0% {
     background-color: rgba(165, 89, 42, 0.9);
   }
+}
+.amber #scene {
+  z-index: 1;
 }
 .amber .text {
   background-color: #ffbf00;
@@ -168,8 +189,14 @@ body {
   width: 100%;
   top: 50%;
 }
+.amber .turret-fire {
+  outline-color: #ffbf00;
+  outline-width: 1px;
+  outline-style: dotted;
+}
 .amber .text.horizontal-lazer-beam:after,
-.amber .text.vertical-lazer-beam:before {
+.amber .text.vertical-lazer-beam:before,
+.amber .text.turret-fire {
   outline-color: #a5592a;
 }
 .amber #screen-refresh:before {
@@ -201,6 +228,9 @@ body {
   0% {
     background-color: rgba(67, 111, 76, 0.9);
   }
+}
+.green #scene {
+  z-index: 1;
 }
 .green .text {
   background-color: #6cff94;
@@ -257,8 +287,14 @@ body {
   width: 100%;
   top: 50%;
 }
+.green .turret-fire {
+  outline-color: #6cff94;
+  outline-width: 1px;
+  outline-style: dotted;
+}
 .green .text.horizontal-lazer-beam:after,
-.green .text.vertical-lazer-beam:before {
+.green .text.vertical-lazer-beam:before,
+.green .text.turret-fire {
   outline-color: #436f4c;
 }
 .green #screen-refresh:before {
@@ -290,6 +326,9 @@ body {
   0% {
     background-color: rgba(224, 224, 224, 0.9);
   }
+}
+.white #scene {
+  z-index: 1;
 }
 .white .text {
   background-color: #202020;
@@ -346,8 +385,14 @@ body {
   width: 100%;
   top: 50%;
 }
+.white .turret-fire {
+  outline-color: #202020;
+  outline-width: 1px;
+  outline-style: dotted;
+}
 .white .text.horizontal-lazer-beam:after,
-.white .text.vertical-lazer-beam:before {
+.white .text.vertical-lazer-beam:before,
+.white .text.turret-fire {
   outline-color: #e0e0e0;
 }
 .white #screen-refresh:before {

@@ -1,0 +1,8 @@
+.deactivated-turret {
+  position: absolute;
+  -webkit-transform: rotateZ(22deg);
+          transform: rotateZ(22deg);
+  font-style: italic;
+  left: 0;
+  top: 0;
+}

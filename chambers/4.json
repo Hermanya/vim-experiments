@@ -1,0 +1,41 @@
+{
+    "chamber": 4,
+    "description": "",
+    "new": ["set number", "lineNumber G"],
+    "configuration": {
+        "display line numbers": true
+    },
+    "scene": [
+        "+---+        +------+",
+        "|  *++       |O  &  |",
+        "|& --+---+   +-+-` `|",
+        "++      @++---++>`?`|",
+        " |      --+-V-+-+`!`|",
+        " |`Woooooord.`++|   |",
+        " |`Word word `<++  ++",
+        " |`  word!  `*--+  |",
+        " |`Word, word`    ++",
+        " +----+-- --- -+--+",
+        "      ++*      |",
+        "       +-------+"
+    ],
+    "narrative": [
+        "Good job on that last one.",
+        "Please disregard those warm words,",
+        "if you used h, j, k, l instead of word w, e, b.",
+        "And by the way, this new chamber",
+        "is trully imposible to complete.",
+        "Even jumping to certain line with",
+        "",
+        "{line number} G",
+        "",
+        "will not help you.",
+        "Do not attempt to complete this puzzle.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "voice in your head>try `:set nonumber` and `:set number`"
+    ]
+}

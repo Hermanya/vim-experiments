@@ -3,9 +3,27 @@
 	"description": "",
 	"new": [],
 	"scene": [
-		"+-+",
-		"|@|",
-		"+-+"
+		" +---------+",
+		" | `@  Wor`+-+",
+		"++-` Wor    `|  +-+",
+		"|& ` word. `-+--+O|",
+		"+---           &| |",
+		"|`   Word?   ` -+ +-+",
+		"|`Woo0rod.`*|  <| |*|",
+		"++ *|^|`Word, word.`|",
+		" +--+-+-------------+"
 	],
-	"speech": ""
+	"narrative": [
+        "This chamber is ment to introduce turrets.",
+        "They are your new friends.",
+        "Just kidding.",
+        "They will kill you once they get a chance,",
+        "and you will never have any friends.",
+        "Keys for success:",
+        "- think fast",
+        "- type fast",
+        "- try not to get killed",
+        "NOTE: this exercise is impossible to complete,",
+        "I suggest you to give it up"
+    ]
 }

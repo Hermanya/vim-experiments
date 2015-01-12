@@ -15,5 +15,15 @@
 		"|*        +-+",
 		"+---------+"
 	],
-	"speech": "Hello and welcome to the VIM user experience enrichment center. You are going to learn VIM through a series of fun test chambers. Shall we begin?"
+	"narrative": [
+        "Good {time of the day}, {subject name}.",
+        "Welcome to the VIM experience enrichment center.",
+        "You are going to learn VIM through a series of *FUN* test chambers.",
+        "Let us begin, shall we?",
+        "The purpose of this chamber is to make sure",
+        "that you are capable of basic movements.",
+        "VIM the editor also allows you to use arrows.",
+        "But who uses arrows?",
+        "Neither should you. Because you can."
+    ]
 }

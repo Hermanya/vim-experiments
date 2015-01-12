@@ -17,5 +17,21 @@
 		" | O*|  | ^++",
 		" +---+  +--+"
 	],
-	"speech": ""
+	"narrative": [
+        "Do not take serioulsy single word you find here.",
+        "Actually, in any chamber.",
+        "My creativity module generated them.",
+        "It's a moron.",
+        "Anyway, speaking of words,",
+        "there are three kinds of them:",
+        "- white &nbsp;&nbsp;&nbsp;&nbsp; space",
+        "- 4lph4_num3r1c_und3r5c0re",
+        "- sequence of any other !@#$@#%#%^$%^",
+        "The purpose of this chamber is not only to introduce words,",
+        "but also how to navigate through them.",
+        "Here we go, move to highlighted area and press:",
+        "- w (beginning of next word)",
+        "- b (beginning of previous word)",
+        "- e (end of next word)"
+    ]
 }

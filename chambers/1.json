@@ -12,7 +12,27 @@
 		"+- |    -+--++------+ | <   O|",
 		"|*          |         +------+",
 		"+-----------+"
-		
+
 	],
-	"speech": "Portal, portal, so exiting! Bumping vertically into a wall opens portals."
+	"narrative": [
+        "Portal, portal,",
+        "portals.",
+        "Have you heard about portals?",
+        "Nevermind, that is not related.",
+        "Moving between lines in VIM is quite interesting.",
+        "Not really.",
+        "It is just as interesting as in most of other editors.",
+        "Moving to a shorter line actually moves you ",
+        "to the closest character to the left.",
+        "If you keep moving vertically and end up on a longer line",
+        "you will not move all the way to the right.",
+        "Instead -- to the column where you started.",
+        "NOTE: this explanation may confuse you.",
+        "It is obviously not my fault.",
+        "Just think with portals.",
+        "By the way, the dotted lines you see.",
+        "Those are lazer beams.",
+        "Try not to touch them.",
+        "Consequences may be dramatic."
+    ]
 }
