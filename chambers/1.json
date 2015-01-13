@@ -9,9 +9,9 @@
 		"|  +-  |*  |   | -+--+    +-------+",
 		"| -+   +-+ | | |  +-+++          *|",
 		"|  +-    |   |      | | -----+----+",
-		"+- |    -+--++------+ | <   O|",
-		"|*          |         +------+",
-		"+-----------+"
+		"++ |    -+--++------+ | <   O|",
+		" |         *|         +------+",
+		" +----------+"
 
 	],
 	"narrative": [
@@ -22,17 +22,18 @@
         "Moving between lines in VIM is quite interesting.",
         "Not really.",
         "It is just as interesting as in most of other editors.",
-        "Moving to a shorter line actually moves you ",
+        "Moving to a shorter line actually moves you",
         "to the closest character to the left.",
         "If you keep moving vertically and end up on a longer line",
         "you will not move all the way to the right.",
         "Instead -- to the column where you started.",
         "NOTE: this explanation may confuse you.",
-        "It is obviously not my fault.",
-        "Just think with portals.",
-        "By the way, the dotted lines you see.",
-        "Those are lazer beams.",
-        "Try not to touch them.",
+        "It is obviously only your fault.",
+        "Just think with portals",
+        "and go up once you get the first star.",
+        "By the way, the dotted lines you see,",
+        "those are lazer beams.",
+        "Do not try to touch them.",
         "Consequences may be dramatic."
     ]
 }
