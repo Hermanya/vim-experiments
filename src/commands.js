@@ -15,7 +15,11 @@ commands['chamber (\\d+)'] = function(chamberNumber) {
             action = {
                 '200': function() {
                     localStorage.chamber = chamberNumber;
-                    mainFunction(JSON.parse(xmlhttp.responseText));
+                    try {
+                        mainFunction(JSON.parse(xmlhttp.responseText));
+                    } catch (_) {
+                        action['404']();
+                    }
                 },
                 '404': function() {
                     window.alert('This is the last chamber at this moment. ' +
