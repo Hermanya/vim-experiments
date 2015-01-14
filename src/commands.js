@@ -12,13 +12,13 @@ commands['chamber (\\d+)'] = function(chamberNumber) {
         var defaultAction = function() {
                 window.alert(xmlhttp.status);
             },
-            action = {
+            actions = {
                 '200': function() {
                     localStorage.chamber = chamberNumber;
                     try {
                         mainFunction(JSON.parse(xmlhttp.responseText));
                     } catch (_) {
-                        action['404']();
+                        actions['404']();
                     }
                 },
                 '404': function() {
@@ -27,7 +27,8 @@ commands['chamber (\\d+)'] = function(chamberNumber) {
                         'Let me know your favorite VIM features which are missing.');
                     window.location.href = 'https://github.com/hermanya/vim-experiments';
                 }
-            }[xmlhttp.status] || defaultAction;
+            },
+            action = actions[xmlhttp.status] || defaultAction;
         action();
 
     };
