@@ -18,7 +18,10 @@ commands['chamber (\\d+)'] = function(chamberNumber) {
                     mainFunction(JSON.parse(xmlhttp.responseText));
                 },
                 '404': function() {
-                    window.alert('Out of such chambers');
+                    window.alert('This is the last chamber at this moment. ' +
+                        'Next you are going to be redirected to the repo of this game. ' +
+                        'Let me know your favorite VIM features which are missing.');
+                    window.location.href = 'https://github.com/hermanya/vim-experiments';
                 }
             }[xmlhttp.status] || defaultAction;
         action();
